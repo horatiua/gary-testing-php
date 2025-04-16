@@ -11,5 +11,8 @@
     "psr-4": {
       "App\\Tests\\": "tests/"
     }
+  },
+  "scripts": {
+    "run-phpunit": "vendor/bin/phpunit"
   }
 }
