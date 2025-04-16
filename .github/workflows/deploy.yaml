@@ -1,0 +1,29 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+#      - name: Docker Login (Action)
+#        uses: docker/login-action@v3
+#        with:
+#          username: ${{ vars.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Install Composer Dependencies
+        working-directory: ./app
+        run: composer install --prefer-dist
+
+      - name: Run Tests
+        working-directory: ./app
+        run: composer run-phpunit
+
+#      - run: |-
+#          docker build --target app -t horatiuandrei/gary-php-composer:1.0 -f ./php/Dockerfile .
+#          docker build -t horatiuandrei/gary-nginx-php:1.0 -f ./nginx/Dockerfile .
+#          docker push horatiuandrei/gary-php-composer:1.0
+#          docker push horatiuandrei/gary-nginx-php:1.0

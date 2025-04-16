@@ -1,0 +1,52 @@
+services:
+  # nginx
+  web:
+    # image: horatiuandrei/gary-nginx-php:1.0
+    build:
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - '80:80'
+
+  # php
+  app:
+    # image: horatiuandrei/garry-php-composer:1.0
+    build:
+      dockerfile: ./php/Dockerfile
+      target: "${BUILD_TARGET:-app}"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      REDIS_HOST: cache
+      REDIS_PORT: ${REDIS_PORT}
+    extra_hosts:
+      # Ensure that host.docker.internal is correctly defined on Linux
+      - host.docker.internal:host-gateway
+
+  # mysql
+  db:
+    image: mysql:8.0
+    volumes:
+      - mysqldata:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  # redis
+  cache:
+    image: redis:latest
+
+volumes:
+  mysqldata:
+
+# docker compose up
+# docker compose up -d
+# docker compose ps
+# docker exec -it {container} sh
+# docker compose up -f {file.yaml} up --env-file ./{file}
+# docker compose exec app composer install
