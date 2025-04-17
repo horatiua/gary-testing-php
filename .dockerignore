@@ -1,0 +1,2 @@
+# Exclude "vendor" at any depth
+/app/vendor
