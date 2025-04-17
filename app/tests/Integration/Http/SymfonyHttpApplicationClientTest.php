@@ -7,7 +7,7 @@ use App\Http\SymfonyHttpApplicationClient;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @group external
+ * @group external_
  */
 class SymfonyHttpApplicationClientTest extends TestCase
 {

@@ -38,3 +38,7 @@ volumes:
   # docker exec -it {container} sh
   # docker compose up -f {file.yaml} up --env-file ./{file}
   # docker compose exec app composer install
+
+  # XDEBUG_MODE=coverage sh bin/dev-mode.sh --build -d
+  # docker exec -it {container} sh
+  # php vendor/bin/phpunit tests/  --coverage-html public/coverage

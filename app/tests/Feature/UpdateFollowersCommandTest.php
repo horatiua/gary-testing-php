@@ -72,7 +72,7 @@ class UpdateFollowersCommandTest extends DatabaseDependantTestCase
             TwitterAccount::class,
             [
                 'twitterAccountId' => self::GCT_ID,
-                'username'         => $gctAccount->getUsername(),
+                'username'         => 'garyclarketech',
                 'tweetCount'       => 100,
                 'listedCount'      => 100,
                 'followingCount'   => 100,
@@ -85,7 +85,7 @@ class UpdateFollowersCommandTest extends DatabaseDependantTestCase
             TwitterAccount::class,
             [
                 'twitterAccountId' => self::PHPUNIT_ID,
-                'username'         => $phpUnitAcct->getUsername(),
+                'username'         => 'phpunit',
                 'tweetCount'       => 100,
                 'listedCount'      => 100,
                 'followingCount'   => 100,
