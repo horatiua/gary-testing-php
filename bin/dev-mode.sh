@@ -1,6 +1,6 @@
 #!/bin/sh
 
-XDEBUG_MODE=${XDEBUG_MODE:-off} \
+#XDEBUG_MODE=${XDEBUG_MODE:-off} \
   docker compose \
   -f docker-compose.yaml \
   -f docker-compose.dev.yaml \
