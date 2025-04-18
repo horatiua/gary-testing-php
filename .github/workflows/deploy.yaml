@@ -22,7 +22,8 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Run PHPStan
-        run: composer run-phpstan
+        working-directory: ./app
+        run: vendor/bin/phpstan analyse
 
       - name: Run PHPUnit tests
         working-directory: ./app
