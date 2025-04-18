@@ -1,5 +1,9 @@
 FROM php:8.1-fpm-alpine as app
 
+# Copy php.ini config file into container
+#COPY ./php/conf.d/php.ini $PHP_INI_DIR/conf.d/
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 # RUN docker-php-ext-install pdo pdo_mysql
 
 # Useful PHP extension installer image, copy binary into your container
