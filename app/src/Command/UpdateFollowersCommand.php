@@ -10,22 +10,23 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class UpdateFollowersCommand
 {
-    private array $accountIds;
-    private TwitterClient $twitterClient;
-    private EntityManagerInterface $entityManager;
-    private \DateTimeInterface $processDate;
-
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param TwitterClient $twitterClient
+     * @param array<int> $accountIds
+     * @param \DateTimeInterface $processDate
+     */
     public function __construct(
-        EntityManagerInterface $entityManager,
-        TwitterClient $twitterClient,
-        array $accountIds,
-        \DateTimeInterface $processDate
+        private EntityManagerInterface $entityManager,
+        private TwitterClient $twitterClient,
+        private array $accountIds,
+        private \DateTimeInterface $processDate
     )
     {
-        $this->entityManager = $entityManager;
-        $this->twitterClient = $twitterClient;
-        $this->accountIds = $accountIds;
-        $this->processDate = $processDate;
+        // $this->entityManager = $entityManager;
+        // $this->twitterClient = $twitterClient;
+        // $this->accountIds = $accountIds;
+        // $this->processDate = $processDate;
     }
 
     public function execute(): void

@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,9 +21,12 @@ jobs:
         working-directory: ./app
         run: composer install --prefer-dist
 
-      - name: Run Tests
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
+
+      - name: Run PHPUnit tests
         working-directory: ./app
-        run: composer run-phpunit
+        run: vendor/bin/phpunit
 
 #      - run: |-
 #          docker build --target app -t horatiuandrei/gary-php-composer:1.0 -f ./php/Dockerfile .

@@ -1,0 +1,151 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Property App\\Entity\\TwitterAccount\:\:\$twitterAccountId type mapping mismatch\: database can contain string but property expects int\.$#'
+			identifier: doctrine.columnType
+			count: 1
+			path: src/Entity/TwitterAccount.php
+
+		-
+			message: '#^Method App\\Http\\TwitterClient\:\:getUserById\(\) has parameter \$accountId with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Http/TwitterClient.php
+
+		-
+			message: '#^Method App\\Http\\TwitterClient\:\:getUserById\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/TwitterClient.php
+
+		-
+			message: '#^Class App\\Repository\\TwitterAccountRepository extends generic class Doctrine\\ORM\\EntityRepository but does not specify its types\: TEntityClass$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Repository/TwitterAccountRepository.php
+
+		-
+			message: '#^Method App\\Repository\\TwitterAccountRepository\:\:addFromArray\(\) has parameter \$userData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/TwitterAccountRepository.php
+
+		-
+			message: '#^Method App\\Utility\\ArrayHelper\:\:flatten\(\) has parameter \$array with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Utility/ArrayHelper.php
+
+		-
+			message: '#^Method App\\Utility\\ArrayHelper\:\:flatten\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Utility/ArrayHelper.php
+
+		-
+			message: '#^Method App\\Tests\\DatabaseDependantTestCase\:\:assertDatabaseHasEntity\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/DatabaseDependantTestCase.php
+
+		-
+			message: '#^Method App\\Tests\\DatabaseDependantTestCase\:\:assertDatabaseHasEntity\(\) has parameter \$criteria with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/DatabaseDependantTestCase.php
+
+		-
+			message: '#^Unable to resolve the template type T in call to method Doctrine\\ORM\\EntityManagerInterface\:\:getRepository\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: tests/DatabaseDependantTestCase.php
+
+		-
+			message: '#^Variable \$entityManager might not be defined\.$#'
+			identifier: variable.undefined
+			count: 2
+			path: tests/DatabaseDependantTestCase.php
+
+		-
+			message: '#^Method App\\Tests\\Feature\\UpdateFollowersCommandTest\:\:the_update_followers_process_completes_correctly\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Feature/UpdateFollowersCommandTest.php
+
+		-
+			message: '#^Method App\\Tests\\Http\\TwitterClientTest\:\:getUserById_returns_correctly_formatted_user_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Http/TwitterClientTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Http\\GuzzleApplicationClientTest\:\:get_retrieves_the_correct_data_from_the_twitter_api\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Http/GuzzleApplicationClientTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Http\\GuzzleApplicationClientTest\:\:the_correct_exception_is_thrown_when_a_fake_bearer_token_is_sent\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Http/GuzzleApplicationClientTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Http\\SymfonyHttpApplicationClientTest\:\:get_retrieves_the_correct_data_from_the_twitter_api\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Http/SymfonyHttpApplicationClientTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Http\\SymfonyHttpApplicationClientTest\:\:the_correct_exception_is_thrown_when_a_fake_bearer_token_is_sent\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Http/SymfonyHttpApplicationClientTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Repository\\TwitterAccountRepositoryTest\:\:addFromArray_can_persist_new_twitter_account_entities\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Repository/TwitterAccountRepositoryTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Repository\\TwitterAccountRepositoryTest\:\:lastRecord_returns_null_when_no_records_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Repository/TwitterAccountRepositoryTest.php
+
+		-
+			message: '#^Method App\\Tests\\Integration\\Repository\\TwitterAccountRepositoryTest\:\:lastRecord_returns_the_correct_TwitterAccount_entity\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Integration/Repository/TwitterAccountRepositoryTest.php
+
+		-
+			message: '#^Method App\\Tests\\SchemaLoader\:\:load\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/SchemaLoader.php
+
+		-
+			message: '#^Method App\\Tests\\Statistics\\TwitterStatisticsCalculatorTest\:\:newFolowersPerWeek_calculate_the_correct_value\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Statistics/TwitterStatisticsCalculatorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Statistics\\TwitterStatisticsCalculatorTest\:\:newFolowersPerWeek_returns_0_when_last_record_is_null\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Statistics/TwitterStatisticsCalculatorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Utility\\ArrayHelperTest\:\:the_flatten_method_returns_a_flattened_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Utility/ArrayHelperTest.php
+
+		-
+			message: '#^Method App\\Tests\\Utility\\DateHelperTest\:\:weeks_between_dates_is_calculated_correctly\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: tests/Utility/DateHelperTest.php
