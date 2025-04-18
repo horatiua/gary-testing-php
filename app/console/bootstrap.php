@@ -1,6 +1,7 @@
 <?php // console/bootstrap.php (version2 updated May 2023)
 use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\EntityManager;
+use GuzzleHttp\Client;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -25,6 +26,6 @@ $entityManager = new EntityManager($conn, $config);
 // This should ideally be stored elsewhere...be sure not to push this file to a public repo
 $bearerToken = 'Bearer '. $_ENV['X_API_KEY'];
 
-$httpClient = \Symfony\Component\HttpClient\HttpClient::create([
+$httpClient = new Client([
     'headers' => ['Authorization' => $bearerToken]
 ]);

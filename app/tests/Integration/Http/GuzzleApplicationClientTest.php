@@ -3,13 +3,15 @@
 namespace App\Tests\Integration\Http;
 
 use App\Http\ApplicationClientException;
+use App\Http\GuzzleApplicationClient;
 use App\Http\SymfonyHttpApplicationClient;
+use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @group external
  */
-class SymfonyHttpApplicationClientTest extends TestCase
+class GuzzleApplicationClientTest extends TestCase
 {
     private const PHPUNIT_ID = 19057969;
     private const BASE_URL = 'https://api.twitter.com/2/';
@@ -17,15 +19,15 @@ class SymfonyHttpApplicationClientTest extends TestCase
     /** @test */
     public function get_retrieves_the_correct_data_from_the_twitter_api()
     {
-        // Setup
-        $httpClient = \Symfony\Component\HttpClient\HttpClient::create([
+        $guzzleClient = new Client([
             'headers' => ['Authorization' => 'Bearer '. $_ENV['X_API_KEY']]
         ]);
-        $symfonyHttpApplicationClient = new SymfonyHttpApplicationClient($httpClient);
+        $guzzleApplicationClient = new GuzzleApplicationClient($guzzleClient);
+
         $url = self::BASE_URL . 'users/' . self::PHPUNIT_ID . '?user.fields=public_metrics';
 
         // Do something
-        $result = $symfonyHttpApplicationClient->get($url);
+        $result = $guzzleApplicationClient->get($url);
         $userData = json_decode($result, true)['data'];
 
         // Make assertions
@@ -40,10 +42,10 @@ class SymfonyHttpApplicationClientTest extends TestCase
     public function the_correct_exception_is_thrown_when_a_fake_bearer_token_is_sent()
     {
         // Setup
-        $httpClient = \Symfony\Component\HttpClient\HttpClient::create([
-            'headers' => ['Authorization' => 'Bearer fake_token']
+        $guzzleClient = new Client([
+            'headers' => ['Authorization' => 'Bearer fake token']
         ]);
-        $symfonyHttpApplicationClient = new SymfonyHttpApplicationClient($httpClient);
+        $guzzleApplicationClient = new GuzzleApplicationClient($guzzleClient);
         $url = self::BASE_URL . 'users/' . self::PHPUNIT_ID . '?user.fields=public_metrics';
 
         $this->expectExceptionCode(401);
@@ -51,6 +53,6 @@ class SymfonyHttpApplicationClientTest extends TestCase
         $this->expectException(ApplicationClientException::class);
 
         // Do something
-        $result = $symfonyHttpApplicationClient->get($url);
+        $result = $guzzleApplicationClient->get($url);
     }
 }

@@ -20,7 +20,7 @@ class TwitterClient
         $url = self::API_V2_URL . 'users/' . $accountId . '?user.fields=public_metrics';
 
         $user = $this->applicationClient->get($url);
-
+        dump($user);
         return ArrayHelper::flatten(json_decode($user, true)['data']);
     }
 }
