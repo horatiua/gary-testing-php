@@ -24,6 +24,7 @@
     "guzzlehttp/guzzle": "^7.9"
   },
   "scripts": {
+    "run-phpstan": "vendor/bin/phpstan analyse",
     "run-phpunit": "vendor/bin/phpunit"
   },
   "config": {

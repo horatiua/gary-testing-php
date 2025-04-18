@@ -22,11 +22,11 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse
+        run: composer run-phpstan
 
       - name: Run PHPUnit tests
         working-directory: ./app
-        run: vendor/bin/phpunit
+        run: composer run-phpunit
 
 #      - run: |-
 #          docker build --target app -t horatiuandrei/gary-php-composer:1.0 -f ./php/Dockerfile .
